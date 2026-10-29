@@ -2,7 +2,8 @@
 
 ## Company Background
 
-![OneStopElectronics Logo](https://github.com/user-attachments/assets/f8007ef5-afd6-4cf1-8cf0-3dc63c9ae42a)
+<img width="1350" height="249" alt="mealime-logo-transparent-smaller-text" src="https://github.com/user-attachments/assets/0f487e00-53e9-468a-bb5d-f13a956a6ac2" />
+
 
 Founded in 2018, OneStop Electronics is a global e-commerce company specializing in popular electronics products. Initially focused on selling through its online platform, the company has rapidly grown, attracting customers worldwide. With a product portfolio that includes high-demand brands such as Apple, Samsung, and Lenovo, OneStop Electronics has become a go-to destination for electronics enthusiasts. The company leverages multiple marketing channels—email campaigns, search engine optimization (SEO), and affiliate partnerships—to reach its expanding customer base. As the business scales, OneStop Electronics continues to strive for excellence in delivering cutting-edge products and customer satisfaction.
 
