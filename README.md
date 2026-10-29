@@ -1,28 +1,29 @@
-# OneStop Electronics E-Commerce Analysis
+# Mealime Subscription Analysis
 
 ## Company Background
 
 <img width="1350" height="249" alt="mealime-logo-transparent-smaller-text" src="https://github.com/user-attachments/assets/0f487e00-53e9-468a-bb5d-f13a956a6ac2" />
 
 
-Founded in 2018, OneStop Electronics is a global e-commerce company specializing in popular electronics products. Initially focused on selling through its online platform, the company has rapidly grown, attracting customers worldwide. With a product portfolio that includes high-demand brands such as Apple, Samsung, and Lenovo, OneStop Electronics has become a go-to destination for electronics enthusiasts. The company leverages multiple marketing channels—email campaigns, search engine optimization (SEO), and affiliate partnerships—to reach its expanding customer base. As the business scales, OneStop Electronics continues to strive for excellence in delivering cutting-edge products and customer satisfaction.
+Founded in 2013, Mealime is a meal planning and home cooking application that provides meal plans, grocery lists, and recipes tailored to users' dietary preferences. 
+Mealime helps users in meal planning for cooking through its online platform and mobile app. Users need to set their food preferences by selecting the diet type like pescatarian, paleo vegetarian, low carbs, or allergens and other preferences. The app then displays recipes along with step-by-step cooking instruction, ingredient list, and required cookware. Curates a list of grocery items based on the recipes selected. The online platform features a community dashboard for users to share cooking tips. The app is available for iOS and Android. The app is free to download, and extra features can be subscribed for $9.99USD/month (Student), $19.99USD/month (Family) or $69.99USD/month (Premium).
 
 <details>
   <summary>Project Goals</summary>
 <br /> 
-OneStop Electronics has been collecting data on a variety of key elements, including orders, order statuses, customer information, products, and geographic data. However, the data is currently unrefined and underutilized, presenting both challenges and opportunities for unlocking valuable insights.
+Mealime has been collecting data on a variety of key elements, including subscriptions, customer information, customer churn status, pricing plans, and geographic data. However, the data is currently unrefined and underutilized, presenting both challenges and opportunities for unlocking valuable insights.
 <br /> 
 <br /> 
-In cleaning and analyzing OneStop's data, meaningful insights can be extracted from the dataset to support the company’s various teams—including finance, sales, product, and marketing. By providing actionable data insights, our aim is to improve operational efficiencies and drive better decision-making, ultimately helping OneStop Electronics optimize its processes and deliver superior products globally. 
+In cleaning and analyzing Mealime's data, meaningful insights can be extracted from the dataset to support the company’s various teams—including finance, sales, product, and marketing. By providing actionable data insights, our aim is to improve operational efficiencies and drive better decision-making, ultimately helping Mealime optimize its processes and deliver superior products globally. 
 </details>
 
 <details>
   <summary>Stakeholder Questions</summary>
 <br /> 
-1. What were the overall sales trends from 2019 to 2022? <br /> 
+1. What were the overall subscriptions trends from 2019 to 2022? <br /> 
 2. What were the company's yearly and monthly growth rates? <br /> 
-3. How has the new loyalty program performed? Should we keep using it? <br /> 
-4. What was the company's refund rate and average order value (AOV)? <br /> 
+3. How has the new Premium pricing plan performed? Should we keep the pricing, reduce the price or abandon it? <br /> 
+4. What was the company's churn rate and average subscription order value (ASOV)? <br /> 
 <br /> 
 
 **Notes:**
@@ -52,18 +53,18 @@ In cleaning and analyzing OneStop's data, meaningful insights can be extracted f
 <img src="https://github.com/user-attachments/assets/e6bfff9d-789c-4805-a3e2-182a9395eb49" height="100%" width="100%"> <!--https://github.com/user-attachments/assets/1cebe6f3-02bf-4b8b-9e86-22bc6dfed832-->
 </p>
 
-**OneStop Electronics'** total sales from **2019 to 2022** reached **$28M**, with **108K total orders**. The company's **average order value (AOV)** across all years stands at **$260 per order**.
+**Mealime '** total sales from **2019 to 2022** reached **$28M**, with **108K total orders**. The company's **average order value (AOV)** across all years stands at **$260 per order**.
 
 - In **2020**, the company experienced a **significant spike in sales** across all metrics. **Sales revenue more than doubled** to **$10M**, driven by a **twofold increase in order volume** (**34K orders**). **MacBook Air** sales were the main product driver of this spike, growing **384%** from 2019-2020. **March 2020** marked the **highest month-over-month (MoM) growth** in the company's history, with a **50% increase in sales**. This surge can likely be attributed to the impact of increased demand due to COVID-19 and the resulting lockdowns
 
-- However, since 2020, the company has struggled to sustain the high sales levels seen during the pandemic. As global activities returned to normal, OneStop Electronics experienced **a decline in YoY growth**, with **sales revenue dropping by 10% in 2021** and a sharper decline of **46% in 2022**. **AOV and order count** have also followed a **similar trend**
+- However, since 2020, the company has struggled to sustain the high sales levels seen during the pandemic. As global activities returned to normal, Mealime  experienced **a decline in YoY growth**, with **sales revenue dropping by 10% in 2021** and a sharper decline of **46% in 2022**. **AOV and order count** have also followed a **similar trend**
 
 - The loyalty program, introduced in 2019, has shown promising growth potential. While non-loyalty members initially outperformed loyalty members in sales, the trend reversed in recent years, with loyalty members now leading in sales, order volume, and AOV evening out. Retaining and optimizing the program could drive future growth
 
 - The Apple iPhone presents a strong opportunity for revenue growth. Despite low sales, its high AOV of $741 indicates untapped potential. Targeted strategies to boost iPhone sales could leverage the existing demand for Apple products and significantly increase revenue
 
 <!--
-The following analysis will provide key insights to help guide the company’s strategy moving forward, focusing on areas like geographical trends, product mix, and loyalty program performance. These insights will enable OneStop Electronics to take informed action and identify new opportunities for growth and efficiency as the company navigates post-pandemic challenges.
+The following analysis will provide key insights to help guide the company’s strategy moving forward, focusing on areas like geographical trends, product mix, and loyalty program performance. These insights will enable Mealime  to take informed action and identify new opportunities for growth and efficiency as the company navigates post-pandemic challenges.
 -->
 
 # Insights Deep Dive
@@ -76,7 +77,7 @@ The following analysis will provide key insights to help guide the company’s s
 
 #### Sales Revenue
 - **Entire Period (2019-2022):** On average, monthly revenue grew by 1.4%, generating average monthly revenue of $585K.
-- **COVID Era Growth:** From January 2019 to December 2020, OneStop Electronics averaged 7% monthly revenue growth peaking in December with $1.2M generated in monthly revenue 
+- **COVID Era Growth:** From January 2019 to December 2020, Mealime  averaged 7% monthly revenue growth peaking in December with $1.2M generated in monthly revenue 
 - **Post-COVID:** Since December 2020, sales have generally declined, with the largest drop occurring in October 2022 (-55%), where monthly sales fell to $178K
 
 #### AOV
@@ -90,7 +91,7 @@ The following analysis will provide key insights to help guide the company’s s
 
 <!--
 #### Sales Revenue
-- From **January 2019 to December 2020**, OneStop Electronics experienced steady growth in sales revenue, **averaging** a **7% monthly increase**. This growth led to a **peak** monthly revenue of **$1.2M** in **December 2020**. For comparison, the average monthly growth rate for the **entire period** (2019-2022) was **1.4%**, with an average monthly revenue of **$585K**.
+- From **January 2019 to December 2020**, Mealime  experienced steady growth in sales revenue, **averaging** a **7% monthly increase**. This growth led to a **peak** monthly revenue of **$1.2M** in **December 2020**. For comparison, the average monthly growth rate for the **entire period** (2019-2022) was **1.4%**, with an average monthly revenue of **$585K**.
 - Following this peak, the company experienced two consecutive months of decline: **-18%** in **January 2021** and **-31%** in **February 2021**. Since December 2020, sales have generally declined, with the largest drop occurring in **October 2022 (-55%)**, where sales fell to **$178K**
 - Despite the overall downward trend, there were moments of recovery. From **June to September 2021**, sales grew by **10% monthly** on average, and a **36% spike** occurred from **November to December 2021**
 
@@ -134,7 +135,7 @@ The following analysis will provide key insights to help guide the company’s s
 
 # Geographical Trends
 
-> ### OneStop Electronics operates across four regions and 194 countries
+> ### Mealime  operates across four regions and 194 countries
 
 <!--
 ## Regional 
@@ -233,7 +234,7 @@ Although the data does not provide a decisive conclusion about the loyalty progr
 Based on the analysis and insights, the team recommends the following: 
 
 ### Seasonal Promotions
-Given seasonal trends, we recommend OneStop Electronics considers implementing strategic promotions to either capitalize on or counteract these patterns. Some suggestions include:
+Given seasonal trends, we recommend Mealime  considers implementing strategic promotions to either capitalize on or counteract these patterns. Some suggestions include:
 
 - **Fall Savings Event**: Use bundled discounts on high-AOV items like the iPhone and MacBook Air, with a “Buy More, Save More” approach to drive higher-value purchases
 - **Summer Essentials Sale**: Combat the summer sales lull with discounts on essentials (chargers, headphones, etc.) and free shipping to boost order volume
@@ -291,7 +292,7 @@ The company should track the effectiveness of these campaigns closely, evaluatin
 -->
 # Dashboard
 
-To explore more trends use the interactive Tableau workbook [here](https://public.tableau.com/app/profile/mayer.scharlat/viz/OneStopElectronic-SalesDashboard/SalesDashboard)
+To explore more trends use the interactive Tableau workbook [here](https://public.tableau.com/app/profile/mayer.scharlat/viz/MealimeElectronic-SalesDashboard/SalesDashboard)
 
 <p align="center" width="100%">
 <img src="https://github.com/user-attachments/assets/53e54652-233c-4dd3-8409-f50778f7f576">
@@ -300,8 +301,8 @@ To explore more trends use the interactive Tableau workbook [here](https://publi
 
 ## Appendix
 -  For more details about the dataset and the data cleaning process check out the [ERD](https://github.com/user-attachments/assets/31778750-444f-4955-b73f-fc152ed77e35)  and the [Dataset Summary & Issue Log](https://drive.google.com/file/d/16kxh6qG9sHhr-ZR1ZikRC5AjvIbR3Uq5/view?usp=sharing)
--  Check out the full Excel [spreadsheet](https://github.com/m-scharlat/OneStopElectronics_Trend_Analysis/blob/main/Excel/OneStopElectronics_Analysis.xlsb)
--  See more of my [exploration](https://github.com/m-scharlat/OneStopElectronics_Trend_Analysis/blob/main/SQL/OneStopElectronics_exploration.sql) and [analysis](https://github.com/m-scharlat/OneStopElectronics_Trend_Analysis/blob/main/SQL/OneStopElectronics_analysis.sql) in SQL
+-  Check out the full Excel [spreadsheet](https://github.com/m-scharlat/Mealime_Trend_Analysis/blob/main/Excel/Mealime_Analysis.xlsb)
+-  See more of my [exploration](https://github.com/m-scharlat/Mealime_Trend_Analysis/blob/main/SQL/Mealime_exploration.sql) and [analysis](https://github.com/m-scharlat/Mealime_Trend_Analysis/blob/main/SQL/Mealime_analysis.sql) in SQL
 
 
 
