@@ -21,16 +21,16 @@ In cleaning and analyzing Mealime's data, meaningful insights can be extracted f
 <details>
   <summary>Stakeholder Questions</summary>
 <br /> 
-1. What were the overall subscriptions trends from 2019 to 2022? <br /> 
+1. What were the overall subscriptions trends for the past three years (2023 to 2025)? <br /> 
 2. What were the company's yearly and monthly growth rates? <br /> 
 3. How has the new discount program performed? Should we keep it? <br /> 
 4. What was the company's churn rate and subscription average order value (AOV)? <br /> 
 <br /> 
 
 **Notes:**
-- Focus on sales revenue, AOV, and order counts
+- Focus on subscription payments, subscription AOV, and subscription counts
 - Look at trends over yearly and monthly periods 
-- For refunds and AOV specifically compare across Apple products
+- For churn rates and subscription AOV specifically compare across premium and standard plans
 </details>
 
 <details open>
