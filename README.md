@@ -23,7 +23,7 @@ In cleaning and analyzing Mealime's data, meaningful insights can be extracted f
 <br /> 
 1. What were the overall subscriptions trends from 2019 to 2022? <br /> 
 2. What were the company's yearly and monthly growth rates? <br /> 
-3. How has the new Premium pricing plan performed? Should we keep the pricing, reduce the price or abandon it? <br /> 
+3. How has the new discount program performed? Should we keep it? <br /> 
 4. What was the company's churn rate and subscription average order value (AOV)? <br /> 
 <br /> 
 
