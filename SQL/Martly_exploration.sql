@@ -32,40 +32,40 @@ FROM core.customers LIMIT 1000;
 
 ## Calculating company wide sales metrics (revenue, aov, and order counts)
 SELECT
-  CAST(SUM(usd_price) as INT) AS total_sales, ## converting to integer
-  CAST(AVG(usd_price) as INT) AS aov, ## converting to integer
+  CAST(SUM(total_amount) as INT) AS total_sales, ## converting to integer
+  CAST(AVG(total_amount) as INT) AS aov, ## converting to integer
   COUNT(DISTINCT id) AS order_count
-FROM core.orders;
+FROM transactions;
 
 ## Calculating yearly sales metrics 
 SELECT
-  EXTRACT(year FROM purchase_ts) AS purchase_year, 
-  CAST(SUM(usd_price) as INT) AS total_sales, 
-  CAST(AVG(usd_price) as INT) AS aov, 
+  EXTRACT(year FROM transaction_date) AS purchase_year, 
+  CAST(SUM(total_amount) as INT) AS total_sales, 
+  CAST(AVG(total_amount) as INT) AS aov, 
   COUNT(DISTINCT id) AS order_count
-FROM core.orders
+FROM transactions
 GROUP BY 1
 ORDER BY 1 DESC;
 
 ## Calculating quarterly sales metrics 
 SELECT
-  EXTRACT(year FROM purchase_ts) AS purchase_year,
-   EXTRACT(quarter FROM purchase_ts) AS purchase_quarter,
-  CAST(SUM(usd_price) as INT) AS total_sales, 
-  CAST(AVG(usd_price) as INT) AS aov, 
+  EXTRACT(year FROM transaction_date) AS purchase_year,
+   EXTRACT(quarter FROM transaction_date) AS purchase_quarter,
+  CAST(SUM(total_amount) as INT) AS total_sales, 
+  CAST(AVG(total_amount) as INT) AS aov, 
   COUNT(DISTINCT id) AS order_count
-FROM core.orders
+FROM transactions
 GROUP BY 1, 2
 ORDER BY 1 DESC, 2 ASC;
 
 ## Calculating monthly sales metrics 
 SELECT
-  EXTRACT(year FROM purchase_ts) AS purchase_year, 
-  EXTRACT(month FROM purchase_ts) AS purchase_month, 
-  CAST(SUM(usd_price) as INT) AS total_sales, 
-  CAST(AVG(usd_price) as INT) AS aov,
+  EXTRACT(year FROM transaction_date) AS purchase_year, 
+  EXTRACT(month FROM transaction_date) AS purchase_month, 
+  CAST(SUM(total_amount) as INT) AS total_sales, 
+  CAST(AVG(total_amount) as INT) AS aov,
   COUNT(DISTINCT id) AS order_count
-FROM core.orders
+FROM tranasctions
 GROUP BY 1,2
 ORDER BY 1 DESC,2 ASC;
 
