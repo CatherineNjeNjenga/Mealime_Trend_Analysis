@@ -54,7 +54,7 @@ ORDER BY 1 DESC;
 ## Calculating quarterly sales metrics 
 SELECT
   EXTRACT(year FROM transaction_date) AS purchase_year,
-   EXTRACT(quarter FROM transaction_date) AS purchase_quarter,
+  EXTRACT(quarter FROM transaction_date) AS purchase_quarter,
   CAST(SUM(total_amount) as INT) AS total_sales, 
   CAST(AVG(total_amount) as INT) AS aov, 
   COUNT(DISTINCT id) AS order_count
