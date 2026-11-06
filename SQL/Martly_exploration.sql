@@ -10,21 +10,25 @@
 
 -- Taking a look at the tables in our dataset
 
+## Products Table
+SELECT *
+FROM products LIMIT 1000;
+
+## Customers Table
+SELECT *
+FROM customers LIMIT 1000;
+
 ## Transactions Table
 SELECT *
 FROM transactions LIMIT 1000;
 
-## Order Status Table
+## Sessions Table
 SELECT *
-FROM core.order_status LIMIT 1000;
+FROM sessions LIMIT 1000;
 
-## Geo Lookup Table
+## Reviews Table
 SELECT *
-FROM core.geo_lookup LIMIT 1000;
-
-## Customers Table
-SELECT *
-FROM core.customers LIMIT 1000;
+FROM reviews LIMIT 1000;
 
 --------------------------
 -- Sales Metrics & Trends
