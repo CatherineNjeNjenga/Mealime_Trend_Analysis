@@ -113,12 +113,12 @@ WITH monthly_aov AS
 (
 SELECT
   DATE(transaction_date, 'start of month') AS purchase_month, 
-  CAST(SUM(usd_price) as INT) AS total_sales, 
-  CAST(AVG(usd_price) as INT) AS aov
+  CAST(SUM(total_amount) as INT) AS total_sales, 
+  CAST(AVG(total_amount) as INT) AS aov,
   COUNT(DISTINCT id) AS order_count
-FROM transactions_detailed
+FROM martly_detailed
 WHERE 
-  LOWER(product_name) LIKE '%vip%'  
+  LOWER(customer_segment) LIKE '%vip%'  
 GROUP BY 1
 ORDER BY 1 DESC
 )
