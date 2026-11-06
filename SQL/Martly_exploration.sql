@@ -77,13 +77,20 @@ GROUP BY 1, 2
 ORDER BY 1 DESC, 2 ASC;
 
 ## Calculating monthly sales metrics 
-SELECT
-  EXTRACT(year FROM transaction_date) AS purchase_year, 
-  EXTRACT(month FROM transaction_date) AS purchase_month, 
+SELECT transaction_id AS id, t.customer_id, c.country AS customer_country, 
+  c.segment AS customer_segment, c.is_churned AS customer_account_status, 
+  t.product_id, p.product_name, transaction_date, quantity, unit_price, 
+  total_amount, discount_applied, status
+  strftime('%Y', transaction_date) AS purchase_year,, 
+  strftime('%m', transaction_date) AS purchase_month, 
   CAST(SUM(total_amount) as INT) AS total_sales, 
   CAST(AVG(total_amount) as INT) AS aov,
   COUNT(DISTINCT id) AS order_count
-FROM tranasctions
+FROM transactions AS t
+LEFT JOIN customers AS c
+USING (customer_id)
+LEFT JOIN products AS p
+USING (product_id)
 GROUP BY 1,2
 ORDER BY 1 DESC,2 ASC;
 
