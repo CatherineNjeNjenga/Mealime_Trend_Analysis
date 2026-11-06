@@ -42,23 +42,37 @@ SELECT
 FROM transactions;
 
 ## Calculating yearly sales metrics 
-SELECT
+SELECT transaction_id AS id, t.customer_id, c.country AS customer_country, 
+  c.segment AS customer_segment, c.is_churned AS customer_account_status, 
+  t.product_id, p.product_name, transaction_date, quantity, unit_price, 
+  total_amount, discount_applied, status  
   EXTRACT(year FROM transaction_date) AS purchase_year, 
   CAST(SUM(total_amount) as INT) AS total_sales, 
   CAST(AVG(total_amount) as INT) AS aov, 
   COUNT(DISTINCT id) AS order_count
-FROM transactions
+FROM transactions AS t
+LEFT JOIN customers AS c
+USING (customer_id)
+LEFT JOIN products AS p
+USING (product_id)
 GROUP BY 1
 ORDER BY 1 DESC;
 
 ## Calculating quarterly sales metrics 
-SELECT
-  EXTRACT(year FROM transaction_date) AS purchase_year,
-  EXTRACT(quarter FROM transaction_date) AS purchase_quarter,
+SELECT transaction_id AS id, t.customer_id, c.country AS customer_country, 
+  c.segment AS customer_segment, c.is_churned AS customer_account_status, 
+  t.product_id, p.product_name, transaction_date, quantity, unit_price, 
+  total_amount, discount_applied, status
+  strftime('%Y', transaction_date) AS purchase_year,
+  ((CAST(strftime('%m', transaction_date) AS INTEGER) - 1) / 3) + 1 AS purchase_quarter,
   CAST(SUM(total_amount) as INT) AS total_sales, 
   CAST(AVG(total_amount) as INT) AS aov, 
   COUNT(DISTINCT id) AS order_count
-FROM transactions
+FROM transactions AS t
+LEFT JOIN customers AS c
+USING (customer_id)
+LEFT JOIN products AS p
+USING (product_id)
 GROUP BY 1, 2
 ORDER BY 1 DESC, 2 ASC;
 
