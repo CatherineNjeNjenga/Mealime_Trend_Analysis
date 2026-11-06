@@ -51,7 +51,7 @@ SELECT
   CAST(SUM(total_amount) as INT) AS total_sales, -- converting to integer
   CAST(AVG(total_amount) as INT) AS aov, -- converting to integer
   COUNT(DISTINCT id) AS order_count
-FROM transactions;
+FROM transactions_detailed;
 
 ## Calculating yearly sales metrics 
 SELECT  
@@ -104,7 +104,7 @@ ORDER BY 1 DESC;
 ## Average yearly AOV for Apple IPhone
 SELECT
   CAST(AVG(total_amount) as INT) AS aov
-FROM tranasctions_detailed
+FROM transactions_detailed
 WHERE 
   LOWER(customer_segment) LIKE '%vip%';
 
