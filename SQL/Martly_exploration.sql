@@ -34,6 +34,18 @@ FROM reviews LIMIT 1000;
 -- Sales Metrics & Trends
 --------------------------
 
+## Creating a tranasctions_detailed view by joining transactios, customer and products table.
+CREATE VIEW transactions_detailed AS
+SELECT transaction_id AS id, t.customer_id, c.country AS customer_country, 
+  c.segment AS customer_segment, c.is_churned AS customer_account_status, 
+  t.product_id, p.product_name, transaction_date, quantity, unit_price, 
+  total_amount, discount_applied, status  
+FROM transactions AS t
+LEFT JOIN customers AS c
+USING (customer_id)
+LEFT JOIN products AS p
+USING (product_id);
+
 ## Calculating company wide sales metrics (revenue, aov, and order counts)
 SELECT
   CAST(SUM(total_amount) as INT) AS total_sales, -- converting to integer
@@ -42,71 +54,53 @@ SELECT
 FROM transactions;
 
 ## Calculating yearly sales metrics 
-SELECT transaction_id AS id, t.customer_id, c.country AS customer_country, 
-  c.segment AS customer_segment, c.is_churned AS customer_account_status, 
-  t.product_id, p.product_name, transaction_date, quantity, unit_price, 
-  total_amount, discount_applied, status  
+SELECT  
   EXTRACT(year FROM transaction_date) AS purchase_year, 
   CAST(SUM(total_amount) as INT) AS total_sales, 
   CAST(AVG(total_amount) as INT) AS aov, 
   COUNT(DISTINCT id) AS order_count
-FROM transactions AS t
-LEFT JOIN customers AS c
-USING (customer_id)
-LEFT JOIN products AS p
-USING (product_id)
+FROM transactions_detailed
 GROUP BY 1
 ORDER BY 1 DESC;
 
 ## Calculating quarterly sales metrics 
-SELECT transaction_id AS id, t.customer_id, c.country AS customer_country, 
-  c.segment AS customer_segment, c.is_churned AS customer_account_status, 
-  t.product_id, p.product_name, transaction_date, quantity, unit_price, 
-  total_amount, discount_applied, status
+SELECT
   strftime('%Y', transaction_date) AS purchase_year,
   ((CAST(strftime('%m', transaction_date) AS INTEGER) - 1) / 3) + 1 AS purchase_quarter,
   CAST(SUM(total_amount) as INT) AS total_sales, 
   CAST(AVG(total_amount) as INT) AS aov, 
   COUNT(DISTINCT id) AS order_count
-FROM transactions AS t
-LEFT JOIN customers AS c
-USING (customer_id)
-LEFT JOIN products AS p
-USING (product_id)
+FROM transactions_detailed
 GROUP BY 1, 2
 ORDER BY 1 DESC, 2 ASC;
 
 ## Calculating monthly sales metrics 
-SELECT transaction_id AS id, t.customer_id, c.country AS customer_country, 
-  c.segment AS customer_segment, c.is_churned AS customer_account_status, 
-  t.product_id, p.product_name, transaction_date, quantity, unit_price, 
-  total_amount, discount_applied, status
+SELECT 
   strftime('%Y', transaction_date) AS purchase_year,, 
   strftime('%m', transaction_date) AS purchase_month, 
   CAST(SUM(total_amount) as INT) AS total_sales, 
   CAST(AVG(total_amount) as INT) AS aov,
   COUNT(DISTINCT id) AS order_count
-FROM transactions AS t
-LEFT JOIN customers AS c
-USING (customer_id)
-LEFT JOIN products AS p
-USING (product_id)
+FROM transactions_detailed
 GROUP BY 1,2
 ORDER BY 1 DESC,2 ASC;
 
 ----------------------------------------------
--- Further Analysis of Apple IPhone AOV Trend 
+-- Further Analysis of VIP Customer Segment AOV Trend 
 ----------------------------------------------
 
-## Apple IPhone performance metrics
-SELECT
-  DATE_TRUNC(purchase_ts, month) AS purchase_month, 
-  -- CAST(SUM(usd_price) as INT) AS total_sales, 
-  CAST(AVG(usd_price) as INT) AS aov
-  -- COUNT(DISTINCT id) AS order_count
-FROM core.orders
+##  VIP customer segment performance metrics
+SELECT transaction_id AS id, t.customer_id, c.country AS customer_country, 
+  c.segment AS customer_segment, c.is_churned AS customer_account_status, 
+  t.product_id, p.product_name, transaction_date, quantity, unit_price, 
+  total_amount, discount_applied, status,
+  DATE(transaction_date, 'start of month') AS purchase_month, 
+  CAST(SUM(total_amount) as INT) AS total_sales, 
+  CAST(AVG(total_amount) as INT) AS aov,
+  COUNT(DISTINCT id) AS order_count
+FROM martly_detailed
 WHERE 
-  LOWER(product_name) LIKE '%iphone%'  
+  LOWER(customer_segment) LIKE '%premium%'  
 GROUP BY 1
 ORDER BY 1 DESC;
 
