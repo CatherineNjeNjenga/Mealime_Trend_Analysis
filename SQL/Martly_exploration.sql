@@ -85,43 +85,40 @@ FROM transactions_detailed
 GROUP BY 1,2
 ORDER BY 1 DESC,2 ASC;
 
-----------------------------------------------
+------------------------------------------------------
 -- Further Analysis of VIP Customer Segment AOV Trend 
-----------------------------------------------
+------------------------------------------------------
 
 ##  VIP customer segment performance metrics
-SELECT transaction_id AS id, t.customer_id, c.country AS customer_country, 
-  c.segment AS customer_segment, c.is_churned AS customer_account_status, 
-  t.product_id, p.product_name, transaction_date, quantity, unit_price, 
-  total_amount, discount_applied, status,
+SELECT 
   DATE(transaction_date, 'start of month') AS purchase_month, 
   CAST(SUM(total_amount) as INT) AS total_sales, 
   CAST(AVG(total_amount) as INT) AS aov,
   COUNT(DISTINCT id) AS order_count
-FROM martly_detailed
+FROM transactions_detailed
 WHERE 
-  LOWER(customer_segment) LIKE '%premium%'  
+  LOWER(customer_segment) LIKE '%vip%'  
 GROUP BY 1
 ORDER BY 1 DESC;
 
 ## Average yearly AOV for Apple IPhone
 SELECT
-  CAST(AVG(usd_price) as INT) AS aov
-FROM core.orders
+  CAST(AVG(total_amount) as INT) AS aov
+FROM tranasctions_detailed
 WHERE 
-  LOWER(product_name) LIKE '%iphone%';
+  LOWER(customer_segment) LIKE '%vip%';
 
-## Average monthly AOV for Apple IPhone
+## Average monthly AOV for VIP Customer Segment
 WITH monthly_aov AS
 (
 SELECT
-  DATE_TRUNC(purchase_ts, month) AS purchase_month, 
-  -- CAST(SUM(usd_price) as INT) AS total_sales, 
+  DATE(transaction_date, 'start of month') AS purchase_month, 
+  CAST(SUM(usd_price) as INT) AS total_sales, 
   CAST(AVG(usd_price) as INT) AS aov
-  -- COUNT(DISTINCT id) AS order_count
-FROM core.orders
+  COUNT(DISTINCT id) AS order_count
+FROM transactions_detailed
 WHERE 
-  LOWER(product_name) LIKE '%iphone%'  
+  LOWER(product_name) LIKE '%vip%'  
 GROUP BY 1
 ORDER BY 1 DESC
 )
