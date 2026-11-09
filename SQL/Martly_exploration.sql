@@ -126,23 +126,26 @@ SELECT
   AVG(aov) AS avg_monthly_aov
 FROM monthly_aov;
 
-## Show the top 3 products by AOV per year (Result: IPhone is 3rd highest in AOV per year as well)
+## Show the top 3 products by AOV per year (Result: VIP is 2nd highest in AOV per year as well)
 WITH aov_per_year AS
 (
 SELECT 
-  EXTRACT(year FROM purchase_ts) as purchase_year,
-  product_name,
-  CAST(AVG(usd_price) as INT) as aov
-FROM core.orders
+  strftime('%Y', transaction_date) AS purchase_year,
+  customer_segment,
+  CAST(AVG(total_amount) as INT) as aov
+FROM transactions_detailed
 GROUP BY 1,2
-ORDER BY 1,3 DESC
+), ranked AS (
+  SELECT 
+    *,
+    RANK() OVER (PARTITION BY purchase_year ORDER BY aov DESC) as aov_rank,
+    ROW_NUMBER() OVER (PARTITION BY purchase_year ORDER BY aov DESC) as aov_rownum
+  FROM aov_per_year
 )
-SELECT 
-  *,
-  ROW_NUMBER() OVER (PARTITION BY purchase_year ORDER BY aov DESC) as aov_rank
-FROM aov_per_year
-QUALIFY aov_rank < 4
-ORDER BY purchase_year DESC, aov_rank ASC;
+SELECT *
+FROM ranked
+WHERE aov_rank <= 4
+ORDER BY purchase_year DESC;
 
 ---------------------------------------------------------------------------------------------------
 -- Customer Segmentation Analysis: Which customer segments have a history of high-value purchases?
