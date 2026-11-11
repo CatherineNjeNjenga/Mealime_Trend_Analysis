@@ -207,14 +207,12 @@ ORDER BY 1,2;
 
 ## Top AOV Countries
 SELECT 
-  country_code as country,
-  ROUND(AVG(usd_price),2) as aov,
-  COUNT(DISTINCT orders.id) as order_count
-FROM core.orders
-LEFT JOIN core.customers
-ON orders.customer_id = customers.id
+  customer_country as country,
+  strftime('%Y', transaction_date) AS purchase_year,
+  COUNT(DISTINCT id) as order_count
+FROM transactions_detailed
 GROUP BY 1
-HAVING order_count > 1000
+HAVING order_count > 1000;
 ORDER BY 2 DESC;
 
 
