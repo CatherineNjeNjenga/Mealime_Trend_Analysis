@@ -211,8 +211,9 @@ SELECT
   strftime('%Y', transaction_date) AS purchase_year,
   COUNT(DISTINCT id) as order_count
 FROM transactions_detailed
+WHERE purchase_year = '2025'
 GROUP BY 1
-HAVING order_count > 1000;
+HAVING order_count > 1000
 ORDER BY 2 DESC;
 
 
