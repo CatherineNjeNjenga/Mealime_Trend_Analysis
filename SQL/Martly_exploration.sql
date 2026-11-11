@@ -154,7 +154,7 @@ ORDER BY purchase_year DESC;
 -- Purchase Plaform
 
 -- Average difference between purchase platforms 
--- On Average, orders purchased on the website are $257 more than orders purchased on mobile phones
+-- On Average, orders purchased on the desktop are $1 more than orders purchased on mobile phones
 
 ## Aggregating AOV by Purchase Device 
 WITH device_aov AS
@@ -177,29 +177,29 @@ ON
     t1.purchase_device = 'desktop' 
     AND t2.purchase_device = 'mobile';
 
--- Loyalty Program
+-- Featured Products
 
-## Average AOV by Loyalty Program in 2022 (latest year)
+## Average AOV by Featured Products in 2025 (latest year)
 SELECT 
-  CASE WHEN loyalty_program = 1 THEN 'loyalty members' ELSE 'non-loyalty members' END AS loyalty_status,
-  AVG(usd_price) as aov
-FROM core.orders
-LEFT JOIN core.customers as cust
-ON orders.customer_id = cust.id
+  CASE WHEN p.is_featured = 1 THEN 'featured product' ELSE 'product not featured' END product_status,
+  CAST(AVG(total_amount) as INT) AS aov
+FROM transactions_detailed t
+LEFT JOIN products p
+USING(product_id)
 WHERE 
-  EXTRACT(year FROM orders.purchase_ts) = 2022
+  strftime('%Y', transaction_date) = '2025'
 GROUP BY 1;
 
-## Average AOV by Loyalty Program and Purchase Platform in 2022
+## Average AOV by Featured Product and Purchase Device in 2025
 SELECT 
-  CASE WHEN loyalty_program = 1 THEN 'loyalty members' ELSE 'non-loyalty members' END AS loyalty_status,
-  purchase_platform,
-  AVG(usd_price) as aov
-FROM core.orders
-LEFT JOIN core.customers as cust
-ON orders.customer_id = cust.id
-WHERE
-  EXTRACT(year FROM orders.purchase_ts) = 2022
+  CASE WHEN p.is_featured = 1 THEN 'featured product' ELSE 'product not featured' END product_status,
+  device AS platform_device,
+  CAST(AVG(total_amount) as INT) AS aov
+FROM transactions_detailed t
+LEFT JOIN products p
+USING(product_id)
+WHERE 
+  strftime('%Y', transaction_date) = '2025'
 GROUP BY 1,2
 ORDER BY 1,2;
 
