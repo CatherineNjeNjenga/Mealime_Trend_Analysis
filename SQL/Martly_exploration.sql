@@ -156,26 +156,26 @@ ORDER BY purchase_year DESC;
 -- Average difference between purchase platforms 
 -- On Average, orders purchased on the website are $257 more than orders purchased on mobile phones
 
-## Aggregating AOV by Purchase Platform 
-WITH platform_aov AS
+## Aggregating AOV by Purchase Device 
+WITH device_aov AS
 (
 SELECT 
-  purchase_platform,
-  AVG(usd_price) as aov
-FROM core.orders
+  device AS purchase_device,
+  CAST(AVG(total_amount) as INT) AS aov
+FROM transactions_detailed
 GROUP BY 1
 ORDER BY 1 DESC, 2
 )
-## Self Joining to calculate the difference in AOV
+-- Self Joining to calculate the difference in AOV
 SELECT 
     ABS(t1.aov - t2.aov) AS aov_difference
 FROM 
-    platform_aov t1
+    device_aov t1
 JOIN 
-    platform_aov t2
+    device_aov t2
 ON 
-    t1.purchase_platform = 'website' 
-    AND t2.purchase_platform = 'mobile app';
+    t1.purchase_device = 'desktop' 
+    AND t2.purchase_device = 'mobile';
 
 -- Loyalty Program
 
