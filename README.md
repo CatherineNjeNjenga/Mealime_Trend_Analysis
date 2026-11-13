@@ -73,8 +73,6 @@ The following analysis will provide key insights to help guide the company’s s
 ### Historical Trends
 
 <p align="center" width="100%">
-<img width="954" height="414" alt="Sales Revenue, MoM (3)" src="https://github.com/user-attachments/assets/baf4488a-0847-402b-8975-4566f771a52b" />
-
 <img src="https://github.com/user-attachments/assets/3429f875-b034-4e89-96df-4c221ed4b8ff">
 </p>
 
