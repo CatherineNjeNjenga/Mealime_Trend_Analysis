@@ -52,12 +52,6 @@ In cleaning and analyzing Mealime's data, meaningful insights can be extracted f
 
 <p align="center" width="100%">
 <img width="954" height="490" alt="Sales Revenue, MoM (6)" src="https://github.com/user-attachments/assets/33bbb6e9-52e9-4d74-a8d5-fc68e912a519" />
-
-<img width="954" height="481" alt="Sales Revenue, MoM (5)" src="https://github.com/user-attachments/assets/dd71d55f-b000-4174-857f-94130279548d" />
-
-<img width="954" height="414" alt="Sales Revenue, MoM (4)" src="https://github.com/user-attachments/assets/e81d37d0-b322-4e1f-8802-e9a8940dd8db" />
-
-<img src="https://github.com/user-attachments/assets/e6bfff9d-789c-4805-a3e2-182a9395eb49" height="100%" width="100%"> <!--https://github.com/user-attachments/assets/1cebe6f3-02bf-4b8b-9e86-22bc6dfed832-->
 </p>
 
 **Mealime '** total sales from **2019 to 2022** reached **$28M**, with **108K total orders**. The company's **average order value (AOV)** across all years stands at **$260 per order**.
