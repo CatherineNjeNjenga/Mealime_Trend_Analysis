@@ -51,6 +51,8 @@ In cleaning and analyzing Mealime's data, meaningful insights can be extracted f
 # Executive Summary
 
 <p align="center" width="100%">
+<img width="954" height="481" alt="Sales Revenue, MoM (5)" src="https://github.com/user-attachments/assets/dd71d55f-b000-4174-857f-94130279548d" />
+
 <img width="954" height="414" alt="Sales Revenue, MoM (4)" src="https://github.com/user-attachments/assets/e81d37d0-b322-4e1f-8802-e9a8940dd8db" />
 
 <img src="https://github.com/user-attachments/assets/e6bfff9d-789c-4805-a3e2-182a9395eb49" height="100%" width="100%"> <!--https://github.com/user-attachments/assets/1cebe6f3-02bf-4b8b-9e86-22bc6dfed832-->
